@@ -23,14 +23,10 @@ async function getRandomWord (event, isRefresh = false){
             positions.push(randomNumber);
         }
     }
-    let scrambleWord = "";
-    positions.forEach(position => {
-        scrambleWord += correctWord[position];
-    })
-
     //show scramble word in DOM :
-    messedUpWordDOM.textContent = scrambleWord;
-
+    messedUpWordDOM.innerHTML = positions.map(position => {
+        return `<span>${correctWord[position]}</span>`;
+    }).join("");
 
     getInformationAboutCorrectWord(isRefresh, correctWord);
 }
@@ -61,7 +57,6 @@ async function getInformationAboutCorrectWord(isRefresh, correctWord){
     //show defenition in DOM :
     hintDOM.textContent = `Hint : ${defenition}`; 
     
-
     //count down : 
     const NeedTimeForEveryWord = 5;         //5 seconds
     const timeLimitDOM = document.querySelector(".time-limit");
@@ -90,6 +85,34 @@ async function getInformationAboutCorrectWord(isRefresh, correctWord){
     //focus input
     const input = document.querySelector("input");
     input.focus();
+    input.addEventListener("keyup", paintSelectedWords);
+}
+
+function paintSelectedWords(event){
+    const value = event.currentTarget.value.toLowerCase();        //input value
+    const spans =  [...messedUpWordDOM.children];   //span in h2
+    //at first remove colored class from all sapns
+    spans.map(span => {
+        if(span.classList.contains("colored")){
+            span.classList.remove("colored");
+        }
+    })
+    
+    //number of any character
+    let valueObject = {};
+    for (const char of value) {
+        valueObject[char] ? valueObject[char]++ : valueObject[char] = 1;
+    }
+    
+    for (const span of spans) {
+        for (const key in valueObject) {
+            if(span.textContent == key && valueObject[key] > 0){
+                span.classList.add("colored");
+                valueObject[key]--;
+            }
+        }
+    }
+    
 }
 
 const form = document.querySelector("form");
@@ -98,7 +121,7 @@ form.addEventListener("submit", checkWord);
 function checkWord (e){
     e.preventDefault();
     const input = document.querySelector("input");
-    const value = input.value;
+    const value = input.value.toLowerCase();
 
     //message to user :
     const victoryMessage = document.querySelector(".victory-message");
