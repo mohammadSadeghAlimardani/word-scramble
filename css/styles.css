@@ -1,0 +1,179 @@
+@font-face {
+    font-family: 'Avenir-Light';
+    src: url('../fonts/Avenir\ Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Medium';
+    src: url('../fonts/Avenir\ Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Regular';
+    src: url('../fonts/Avenir\ Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Pacifico-Regular';
+    src: url('../fonts/Pacifico-Regular.ttf') format('truetype');
+}
+
+body{
+    font-family: 'Avenir-Regular';
+    width: 100%;
+    height: 100vh;
+    background-color: #5372EF;
+    display: grid;
+    place-items: center;
+}
+h1{
+    font-size: 1.5rem;
+}
+h2{
+    font-size: 1.5rem;
+}
+h3{
+    font-size: 1.17rem;
+}
+h4{
+    font-size: 1rem;
+}
+h5{
+    font-size: 0.83rem;
+}
+h6{
+    font-size: 0.67rem;
+}
+
+.btn{
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Avenir-Regular';
+    transition: all 0.5s;
+    text-transform: capitalize;
+}
+.btn.btn-info{
+    border: 1px solid #5372EF;
+    background-color: #5372EF;
+    color: white;
+}
+.btn.btn-info:hover{
+    background-color: #7b9aff;
+}
+.btn.btn-gray{
+    border: 1px solid #6C757E;
+    background-color: #6c757e;
+    color: white;
+}
+.btn.btn-gray:hover{
+    background-color: #8a93a6;
+}
+
+
+.gameContainer{
+    width: 40%;
+    background-color: white;
+}
+@media screen and (max-width:1200px){
+    .gameContainer{
+        width: 60%;
+    }
+}
+@media screen and (max-width:867px){
+    .gameContainer{
+        width: 80%;
+    }
+}
+@media screen and (max-width:640px){
+    .gameContainer{
+        width: 95%;
+    }
+}
+.gameContainer-header{
+    padding: 1rem;
+    border-bottom: 1px solid #D4D4D4;
+}
+.gameContainer-header h2{
+    text-transform: capitalize;
+}
+.gameContainer-body{
+    padding: 1.5rem;
+}
+.gameContainer-body h2.messedUp-word{
+    letter-spacing: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.gameContainer-body p{
+    margin: 1.5rem 0;
+    line-height: 1.6;
+}
+.gameContainer-body p.hint.warning{
+    color: red;
+    font-size: 2rem;
+}
+.gameContainer-body .input-container{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.gameContainer-body .input-container input{
+    letter-spacing: 1px;
+    padding: 0.65rem;
+    border: 2px solid #C7C7C7;
+}
+.gameContainer-body .input-container input::placeholder{
+    font-family: 'Avenir-Regular';
+    color: #C7C7C7;
+}
+.gameContainer-body .input-container input:focus{
+    outline: none;
+}
+.gameContainer-body .btn-container{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+
+/* FINISH GAME */
+.gameOver-message, .victory-message{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    transform: scale(0);
+    transition: all 0.5s;
+}
+.gameOver-message.show, .victory-message.show{
+    transform: scale(1);
+}
+.gameOver-message section, .victory-message section{
+    width: 60%;
+    background-color: white;
+    padding: 4rem;
+}
+@media screen and (max-width:567px){
+    .gameOver-message section, .victory-message section{
+        width: 50%;
+    }
+}
+.gameOver-message h2, .victory-message h2{
+    text-align: center;
+    font-family: 'Pacifico-Regular';
+    font-size: 3rem;
+    line-height: 1.6;
+}
+.gameOver-message h3{
+    text-align: center;
+    margin-top: 2rem;
+}

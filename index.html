@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>messed up word</title>
+        <link rel="stylesheet" href="./css/reset.css"/>
+        <link rel="stylesheet" href="./css/styles.css"/>
+    </head>
+    <body>
+        <div class="gameContainer">
+            <div class="gameContainer-header">
+                <h2>messed up word</h2>
+            </div>
+            <div class="gameContainer-body">
+                <h2 class="messedUp-word"></h2>
+                <p class="hint"></p>
+                <p class="time-limit"></p>
+                <form action="#">
+                    <div class="input-container">
+                        <input type="text" placeholder="Enter a valid word">
+                    </div>
+                    <div class="btn-container">
+                        <button type="reset" class="btn btn-gray" id="refresh-btn">refresh word</button>
+                        <button type="submit" class="btn btn-info" id="check-btn">check word</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- FINISH GAME -->
+        <div class="gameOver-message">
+            <section>
+                <h2>game over</h2>
+                <h3></h3>
+            </section>
+            <audio class="gameOver-music">
+                <source src="./audio/gameOver-music.mp3"/>
+            </audio>
+        </div>
+        <div class="victory-message">
+            <section>
+                <h2>you won</h2>
+            </section>
+            <audio class="victory-music">
+                <source src="./audio/victory-music.mp3"/>
+            </audio>
+        </div>
+        <script src="./app.js"></script>
+    </body>
+</html>
